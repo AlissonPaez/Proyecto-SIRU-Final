@@ -1,16 +1,19 @@
 package sede_principal.datos;
 
-// Aquí irá la implementación real para consultar y gestionar estudiantes, docentes y administrativos.
-// Consulta la BDAcademica pero va a guardar únicamente las operaciones relacionadas
-// con usuarios: búsqueda por email, verificación de credenciales y gestión de roles.
+import java.util.HashMap;
+import java.util.Map;
 
-import sede_principal.datos.BDAcademica;
-
+/**
+ * Responsabilidad: Administrar usuarios del sistema.
+ */
 public class RepositorioUsuarios {
-    private BDAcademica bdAcademica;
+    private final Map<String, String> usuarios = new HashMap<>();
 
-    public RepositorioUsuarios(BDAcademica bdAcademica) {
-        this.bdAcademica = bdAcademica;
+    public void registrarUsuario(String email, String contraseña) {
+        usuarios.put(email, contraseña);
+    }
+
+    public boolean validarCredenciales(String email, String contraseña) {
+        return usuarios.containsKey(email) && usuarios.get(email).equals(contraseña);
     }
 }
-

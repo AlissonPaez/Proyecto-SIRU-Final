@@ -1,6 +1,19 @@
 package sede_principal.datos;
 
-// Aquí irá la implementación real para guardar y recuperar actas y diplomas firmados.
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Responsabilidad: Almacenar documentos firmados digitalmente.
+ */
 public class RepositorioDocsFirmados {
-    
+    private final Map<String, String> documentos = new HashMap<>();
+
+    public void guardarDocumento(String idDocumento, String contenido) {
+        documentos.put(idDocumento, contenido);
+    }
+
+    public String consultarDocumento(String idDocumento) {
+        return documentos.getOrDefault(idDocumento, "Documento no encontrado");
+    }
 }
