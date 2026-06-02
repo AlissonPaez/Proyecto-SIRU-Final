@@ -2,15 +2,26 @@ package sede_rural;
 
 import sede_principal.datos.BDAcademica;
 
-// Cuando se recupera la conexión, envía los datos registrados localmente
-// hacia la BD académica principal y resuelve conflictos de sincronización.
+/**
+ * Responsabilidad: Sincronizar los datos locales de la sede rural con la sede principal
+ * cuando vuelve la conexión.
+ */
 public class AgenteSincronizacion {
+    private final BDLocal bdLocal;
+    private final BDAcademica bdCentral;
 
-    private BDLocal bdLocal;
-    private BDAcademica bdAcademica;
-
-    public AgenteSincronizacion(BDLocal bdLocal, BDAcademica bdAcademica) {
+    public AgenteSincronizacion(BDLocal bdLocal, BDAcademica bdCentral) {
         this.bdLocal = bdLocal;
-        this.bdAcademica = bdAcademica;
+        this.bdCentral = bdCentral;
+    }
+
+    /**
+     * Sincroniza las inscripciones locales con la base de datos central.
+     */
+    public void sincronizar() {
+        bdLocal.consultarPendientes().forEach((idEstudiante, idGrupo) -> {
+            bdCentral.registrarInscripcion(idEstudiante, idGrupo);
+        });
+        bdLocal.limpiarPendientes();
     }
 }
