@@ -1,6 +1,12 @@
 package excepciones.validacion;
 
-
-public class ValidacionException extends Exception{
+/**
+ * Excepción para estudiantes no encontrados.
+ */
+public class EstudianteNoEncontradoException extends ValidacionException{
+    
+    public EstudianteNoEncontradoException(String mensaje){
+        super(mensaje);
+    }
     
 }
