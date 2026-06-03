@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Responsabilidad: Almacenar documentos firmados digitalmente.
+ * Almacenar documentos firmados digitalmente.
  */
 public class RepositorioDocsFirmados {
     private final Map<String, String> documentos = new HashMap<>();

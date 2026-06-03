@@ -3,14 +3,13 @@ package sede_principal.datos;
 import excepciones.documentos.*;
 
 /**
- * Responsabilidad: Firmar digitalmente documentos.
+ * Firmar digitalmente documentos.
  */
 public class ServicioFirmaDigital {
-    public String firmarDocumento(String contenido, String idFirmante) throws FirmaDigitalException {
+    public String firmarDocumento(String contenido, String idFirmante) {
         if (idFirmante == null || idFirmante.isBlank()) {
             throw new FirmanteNoAutorizadoException("Firmante inválido");
         }
-        // Simulación de firma digital
         return contenido + " | Firmado por: " + idFirmante;
     }
 }

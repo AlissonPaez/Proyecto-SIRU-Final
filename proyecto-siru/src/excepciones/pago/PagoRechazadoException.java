@@ -3,10 +3,8 @@ package excepciones.pago;
 /**
  * Excepción base para pagos rechazados
  */
-public class PagoRechazadoException extends Exception{
-
-    public PagoException(String mensaje){
+public class PagoRechazadoException extends PagoException {
+    public PagoRechazadoException(String mensaje) {
         super(mensaje);
     }
-    
 }
